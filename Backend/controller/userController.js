@@ -1,22 +1,26 @@
-import express from 'express'
-import User from '../models/userModel.js'
-import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
+import express from 'express';
+import User from '../models/userModel.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
-export const register =async(req,res)=>{
+export const register = async (req, res) => {
     try {
-        const {name,email,password,skills,location}=req.body;
-        const hashedPassword=await bcrypt.hash(password,10);
-       // const resumeUrl=req.file ?req.file.path : '';
-        const user=new User({
-            name,email,password:hashedPassword,skills,location
+        const { name, email, password, skills, location } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = new User({
+            name,
+            email,
+            password: hashedPassword,
+            skills,
+            location
         });
         await user.save();
-        res.status(201).json({message:"User registered successfully"});
+        res.status(201).json({ message: "User registered successfully" });
     } catch (error) {
-        res.status(500).json({message:"Something went wrong"});
+        res.status(500).json({ message: "Something went wrong" });
     }
-}
+};
+
 export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -32,10 +36,34 @@ export const loginUser = async (req, res) => {
         res.status(500).json({ message: "Login failed", error });
     }
 };
-export const uploadResume=async(req,res)=>{
+
+export const getProfile = async (req, res) => {
     try {
-        
+        const user = await User.findById(req.userId).select("-password");
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json({ user });
     } catch (error) {
-        
+        console.error("Error fetching profile", error);
+        res.status(500).json({ message: "Something went wrong" });
     }
-}
+};
+
+export const updateProfile = async (req, res) => {
+    try {
+        const { name, email, skills, location } = req.body;
+        const updateData = { name, email, skills, location };
+        if (skills) {
+            updateData.skills = skills.split(",").map(skill => skill.trim());
+        }
+        if (req.file) {
+            updateData.resumeUrl = req.file.path;
+        }
+        const updatedUser = await User.findByIdAndUpdate(req.userId, updateData, { new: true }).select("-password");
+        res.status(200).json({ message: "Profile updated successfully", user: updatedUser });
+    } catch (error) {
+        console.error("Error updating profile", error);
+        res.status(500).json({ message: "Something went wrong" });
+    }
+};
