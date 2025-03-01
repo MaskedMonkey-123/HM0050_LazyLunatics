@@ -15,11 +15,12 @@ export const postJob = async (req, res) => {
             salary
         });
 
-        const matchingUsers = await userModel.find({
-            role: "employee",
-            skills: { $in: requiredSkills }
-        });
-        for (const user of matchingUsers) {
+        // Fetch all users from the database
+        const allUsers = await userModel.find({});
+        console.log(allUsers);
+
+        // Send email to all users
+        for (const user of allUsers) {
             await sendEmail({
                 studentEmail: user.email,
                 studentName: user.name,
@@ -27,8 +28,10 @@ export const postJob = async (req, res) => {
                 companyName: company,
                 jobDescription: jobDescription,
             });
+            console.log(`Email sent to ${user.email}`);
         }
-        res.status(201).json({ message: "Job posted successfully" });
+
+        res.status(201).json({ message: "Job posted successfully", job: newJob });
 
     } catch (error) {
         console.error("Error posting job", error);
