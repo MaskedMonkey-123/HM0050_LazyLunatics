@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import axios from "axios";
-=======
-
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
@@ -17,7 +13,6 @@ const Jobs = () => {
   const { toast } = useToast();
   const [isPosting, setIsPosting] = useState(false);
 
-<<<<<<< HEAD
   const [jobData, setJobData] = useState({
     title: "",
     location: "",
@@ -50,15 +45,6 @@ const Jobs = () => {
         description: "Failed to post job. Please try again.",
       });
     }
-=======
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Success",
-      description: "Job posted successfully!",
-    });
-    setIsPosting(false);
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
   };
 
   return (
@@ -70,13 +56,9 @@ const Jobs = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Job Postings</h1>
-<<<<<<< HEAD
           <p className="text-muted-foreground">
             Manage and create job postings
           </p>
-=======
-          <p className="text-muted-foreground">Manage and create job postings</p>
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
         </div>
         <Button onClick={() => setIsPosting(true)}>
           <Plus className="mr-2 h-4 w-4" />
@@ -93,10 +75,7 @@ const Jobs = () => {
                 id="title"
                 placeholder="e.g., Senior Frontend Developer"
                 required
-<<<<<<< HEAD
                 onChange={handleChange}
-=======
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
               />
             </div>
 
@@ -107,31 +86,21 @@ const Jobs = () => {
                   id="location"
                   placeholder="e.g., Remote, New York, NY"
                   required
-<<<<<<< HEAD
                   onChange={handleChange}
-=======
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="type">Employment Type</Label>
                 <Input
-<<<<<<< HEAD
                   id="employeeType"
                   placeholder="e.g., Full-time, Contract"
                   required
                   onChange={handleChange}
-=======
-                  id="type"
-                  placeholder="e.g., Full-time, Contract"
-                  required
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-<<<<<<< HEAD
               <Label htmlFor="salary">Salary</Label>
               <Input
                 id="salary"
@@ -150,32 +119,17 @@ const Jobs = () => {
                 className="min-h-[200px]"
                 required
                 onChange={handleChange}
-=======
-              <Label htmlFor="description">Job Description</Label>
-              <Textarea
-                id="description"
-                placeholder="Enter detailed job description..."
-                className="min-h-[200px]"
-                required
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="requirements">Requirements</Label>
               <Textarea
-<<<<<<< HEAD
                 id="requiredSkills"
                 placeholder="Enter job requirements..."
                 className="min-h-[150px]"
                 required
                 onChange={handleChange}
-=======
-                id="requirements"
-                placeholder="Enter job requirements..."
-                className="min-h-[150px]"
-                required
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
               />
             </div>
 

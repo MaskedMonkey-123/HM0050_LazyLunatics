@@ -6,10 +6,6 @@ import {
   LayoutGrid,
   User,
   Briefcase,
-<<<<<<< HEAD
-  Settings,
-=======
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
   LogOut,
   Menu,
   X,
@@ -24,10 +20,6 @@ const EmployeeLayout = () => {
     { icon: LayoutGrid, label: "Dashboard", path: "/employee/dashboard" },
     { icon: User, label: "Profile", path: "/employee/profile" },
     { icon: Briefcase, label: "My Applications", path: "/employee/applications" },
-<<<<<<< HEAD
-    { icon: Settings, label: "Settings", path: "/employee/settings" },
-=======
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
   ];
 
   return (
@@ -58,13 +50,9 @@ const EmployeeLayout = () => {
       >
         <div className="flex h-full flex-col gap-2">
           <div className="flex h-16 items-center border-b border-border/50 px-6">
-<<<<<<< HEAD
-            <h2 className="text-lg font-semibold">SkillMatcher</h2>
-=======
           <Link to="/">
             <h2 className="text-lg font-semibold">SkillMatcher</h2>
           </Link>
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
           </div>
 
           <nav className="flex-1 space-y-1 px-3 py-4">
@@ -81,12 +69,6 @@ const EmployeeLayout = () => {
           </nav>
 
           <div className="border-t border-border/50 p-4">
-<<<<<<< HEAD
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <LogOut className="h-4 w-4" />
-              Logout
-            </Button>
-=======
             <Link to="/">
             <Button variant="ghost" className="w-full justify-start gap-2 cursor-pointer">
               <LogOut className="h-4 w-4" />
@@ -94,7 +76,6 @@ const EmployeeLayout = () => {
             </Button>
             </Link>
             
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
           </div>
         </div>
       </motion.aside>

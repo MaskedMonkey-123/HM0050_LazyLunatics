@@ -20,18 +20,6 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background to-secondary/20">
       {/* Navigation Bar */}
-<<<<<<< HEAD
-      <nav className="p-4 flex justify-end">
-        <div className="space-x-4">
-          <Button variant="outline" asChild>
-            <Link to="/employee/login">Login</Link>
-          </Button>
-          <Button asChild>
-            <Link to="/employee/signup">Sign Up</Link>
-          </Button>
-        </div>
-      </nav>
-=======
       {/* Navigation Bar */}
 <nav className="p-4 flex justify-between bg-white fixed w-full top-0 z-50">
   {/* Logo */}
@@ -52,7 +40,6 @@ const Index = () => {
   </div>
 </nav>
 
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
 
 {/* 
       <nav className="p-4 flex justify-end">
@@ -85,10 +72,7 @@ const Index = () => {
             Welcome to SkillMatcher
           </h1>
           <p className="text-lg text-muted-foreground">
-<<<<<<< HEAD
-=======
             SkillMatcher<br></br>
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
             Connect with opportunities that match your skills
           </p>
         </motion.div>
@@ -156,8 +140,6 @@ const Index = () => {
           By continuing, you agree to our Terms of Service and Privacy Policy
         </motion.p>
       </div>
-<<<<<<< HEAD
-=======
               
       <div id="about" className="py-16 px-6 bg-gray-100 text-center">
   <h2 className="text-3xl font-bold mb-4">About SkillMatcher</h2>
@@ -226,7 +208,6 @@ const Index = () => {
 </div>
 
 
->>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
     </div>
   );
 };
