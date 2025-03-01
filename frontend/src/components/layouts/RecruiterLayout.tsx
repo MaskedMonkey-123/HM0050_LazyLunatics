@@ -6,7 +6,10 @@ import {
   LayoutGrid,
   Users,
   Briefcase,
+<<<<<<< HEAD
   Settings,
+=======
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
   LogOut,
   Menu,
   X,
@@ -22,7 +25,10 @@ const RecruiterLayout = () => {
     { icon: LayoutGrid, label: "Dashboard", path: "/recruiter/dashboard" },
     { icon: Briefcase, label: "Job Postings", path: "/recruiter/jobs" },
     { icon: Users, label: "Candidates", path: "/recruiter/candidates" },
+<<<<<<< HEAD
     { icon: Settings, label: "Settings", path: "/recruiter/settings" },
+=======
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
   ];
 
   return (
@@ -53,7 +59,13 @@ const RecruiterLayout = () => {
       >
         <div className="flex h-full flex-col gap-2">
           <div className="flex h-16 items-center border-b border-border/50 px-6">
+<<<<<<< HEAD
             <h2 className="text-lg font-semibold">SkillMatcher</h2>
+=======
+          <Link to="/">
+            <h2 className="text-lg font-semibold">SkillMatcher</h2>
+            </Link>
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
           </div>
 
           <nav className="flex-1 space-y-1 px-3 py-4">
@@ -70,10 +82,18 @@ const RecruiterLayout = () => {
           </nav>
 
           <div className="border-t border-border/50 p-4">
+<<<<<<< HEAD
+=======
+          <Link to="/">
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
             <Button variant="ghost" className="w-full justify-start gap-2">
               <LogOut className="h-4 w-4" />
               Logout
             </Button>
+<<<<<<< HEAD
+=======
+          </Link>
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
           </div>
         </div>
       </motion.aside>

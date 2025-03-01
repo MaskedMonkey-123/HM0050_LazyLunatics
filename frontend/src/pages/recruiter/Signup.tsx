@@ -33,10 +33,13 @@ const RecruiterSignup = () => {
     try {
       const response = await axios.post(`${VITE_BACKEND_URL}/api/recruiter/register`,formData);
       if(response.status === 200 || response.status === 201){
+<<<<<<< HEAD
         const token = response.data.token;
         if(token){
           localStorage.setItem('token',token);
         }
+=======
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
         navigate('/recruiter/dashboard');
       }else{
         setError('Invalid credentials');

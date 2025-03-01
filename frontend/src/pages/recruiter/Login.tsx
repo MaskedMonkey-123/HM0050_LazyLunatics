@@ -20,12 +20,16 @@ const RecruiterLogin = () => {
     event.preventDefault();
     try {
       const response = await axios.post(`${VITE_BACKEND_URL}/api/recruiter/login`,{email,password});
+<<<<<<< HEAD
       console.log("Login Response:", response.data); 
       if(response.status === 200){
         const token = response.data.token;
         if(token){
           localStorage.setItem('token',token);
         }
+=======
+       if(response.status === 200){
+>>>>>>> 33309ae91219871e7aa0691aa9e510a1bb2963c7
         navigate('/recruiter/dashboard');
       }else{
         alert('Invalid credentials');
