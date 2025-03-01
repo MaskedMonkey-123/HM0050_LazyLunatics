@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import connectDB from "./config/db.js";
 import userRoutes from './routes/userRoutes.js'
 import recruiterRoutes from './routes/recruiterRoutes.js'
+import jobpostRoutes from './routes/jobpostRoutes.js'
 
 const app = express();
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(bodyparser.json());
 
 app.use('/api/user', userRoutes);
 app.use('/api/recruiter', recruiterRoutes);
+app.use('/api/recruiter',jobpostRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
