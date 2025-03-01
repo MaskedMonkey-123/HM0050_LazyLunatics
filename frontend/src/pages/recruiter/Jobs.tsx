@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
@@ -13,13 +13,38 @@ const Jobs = () => {
   const { toast } = useToast();
   const [isPosting, setIsPosting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [jobData, setJobData] = useState({
+    title: "",
+    location: "",
+    employeeType: "",
+    jobDescription: "",
+    requiredSkills: "",
+    salary: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setJobData((prevState) => ({ ...prevState, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Success",
-      description: "Job posted successfully!",
-    });
-    setIsPosting(false);
+    try {
+      await axios.post("http://localhost:5000/api/recruiter/postJob", jobData);
+      toast({
+        title: "Success",
+        description: "Job posted successfully!",
+      });
+      setIsPosting(false);
+    } catch (error: any) {
+      console.error("Error response:", error.response?.data || error.message);
+      toast({
+        title: "Error",
+        description: "Failed to post job. Please try again.",
+      });
+    }
   };
 
   return (
@@ -31,7 +56,9 @@ const Jobs = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">Job Postings</h1>
-          <p className="text-muted-foreground">Manage and create job postings</p>
+          <p className="text-muted-foreground">
+            Manage and create job postings
+          </p>
         </div>
         <Button onClick={() => setIsPosting(true)}>
           <Plus className="mr-2 h-4 w-4" />
@@ -48,6 +75,7 @@ const Jobs = () => {
                 id="title"
                 placeholder="e.g., Senior Frontend Developer"
                 required
+                onChange={handleChange}
               />
             </div>
 
@@ -58,35 +86,50 @@ const Jobs = () => {
                   id="location"
                   placeholder="e.g., Remote, New York, NY"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="type">Employment Type</Label>
                 <Input
-                  id="type"
+                  id="employeeType"
                   placeholder="e.g., Full-time, Contract"
                   required
+                  onChange={handleChange}
                 />
               </div>
             </div>
 
             <div className="space-y-2">
+              <Label htmlFor="salary">Salary</Label>
+              <Input
+                id="salary"
+                type="number"
+                placeholder="Enter salary"
+                required
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="description">Job Description</Label>
               <Textarea
-                id="description"
+                id="jobDescription"
                 placeholder="Enter detailed job description..."
                 className="min-h-[200px]"
                 required
+                onChange={handleChange}
               />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="requirements">Requirements</Label>
               <Textarea
-                id="requirements"
+                id="requiredSkills"
                 placeholder="Enter job requirements..."
                 className="min-h-[150px]"
                 required
+                onChange={handleChange}
               />
             </div>
 

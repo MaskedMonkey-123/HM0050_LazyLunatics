@@ -15,9 +15,9 @@ import { Input } from "@/components/ui/input";
 const Dashboard = () => {
   // Placeholder data
   const stats = [
-    { icon: Briefcase, label: "Active Job Posts", value: "8" },
-    { icon: Users, label: "Total Applications", value: "124" },
-    { icon: Eye, label: "Profile Views", value: "45" },
+    { icon: Briefcase, label: "Active Job Posts", value: "0" },
+    { icon: Users, label: "Total Applications", value: "0" },
+    { icon: Eye, label: "Profile Views", value: "0" },
   ];
 
   const recentApplications = [

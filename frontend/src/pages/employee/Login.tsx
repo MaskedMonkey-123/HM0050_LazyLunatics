@@ -23,7 +23,11 @@ const EmployeeLogin = () => {
     event.preventDefault();
     try {
       const response = await axios.post(`${VITE_BACKEND_URL}/api/user/login`,{email,password});
-       if(response.status === 200){
+      if(response.status === 200){
+        const token = response.data.token;
+        if(token){
+          localStorage.setItem('token',token);
+        }
         navigate('/employee/dashboard');
       }else{
         alert('Invalid credentials');
