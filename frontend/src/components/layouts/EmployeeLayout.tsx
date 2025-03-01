@@ -6,7 +6,6 @@ import {
   LayoutGrid,
   User,
   Briefcase,
-  Settings,
   LogOut,
   Menu,
   X,
@@ -21,7 +20,6 @@ const EmployeeLayout = () => {
     { icon: LayoutGrid, label: "Dashboard", path: "/employee/dashboard" },
     { icon: User, label: "Profile", path: "/employee/profile" },
     { icon: Briefcase, label: "My Applications", path: "/employee/applications" },
-    { icon: Settings, label: "Settings", path: "/employee/settings" },
   ];
 
   return (
@@ -52,7 +50,9 @@ const EmployeeLayout = () => {
       >
         <div className="flex h-full flex-col gap-2">
           <div className="flex h-16 items-center border-b border-border/50 px-6">
+          <Link to="/">
             <h2 className="text-lg font-semibold">SkillMatcher</h2>
+          </Link>
           </div>
 
           <nav className="flex-1 space-y-1 px-3 py-4">
@@ -69,10 +69,13 @@ const EmployeeLayout = () => {
           </nav>
 
           <div className="border-t border-border/50 p-4">
-            <Button variant="ghost" className="w-full justify-start gap-2">
+            <Link to="/">
+            <Button variant="ghost" className="w-full justify-start gap-2 cursor-pointer">
               <LogOut className="h-4 w-4" />
               Logout
             </Button>
+            </Link>
+            
           </div>
         </div>
       </motion.aside>
