@@ -38,4 +38,3 @@ export const postJob = async (req, res) => {
         res.status(500).json({ message: "Something went wrong" });
     }
 };
-//get function routes for getting job

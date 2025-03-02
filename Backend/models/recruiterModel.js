@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const recruiterSchema = new mongoose.Schema({
-    companyName: {type:String,required:true},
-    name: {type:String,required:true},
-    email: {type:String,unique:true,required:true},
-    password: {type:String,required:true},
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
 });
 
-export default mongoose.model("Recruiter", recruiterSchema);
+const recruiter = mongoose.model("Recruiter", recruiterSchema);
+export default recruiter;
