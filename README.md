@@ -30,6 +30,7 @@ Landing Page of the website and Dasboard
 ![Image](https://github.com/user-attachments/assets/b5801ec6-88a4-4dc3-8604-b0a01bc908de)
 
 Deployed Url
+https://hm-0050-lazy-lunatics-yedt.vercel.app/
 
 Video Url
 https://drive.google.com/file/d/1P2h6has4-GBnxZjl6QlQFLdAVu53N3gl/view?usp=drive_link
