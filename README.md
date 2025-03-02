@@ -1,4 +1,4 @@
-# HM0050_LazyLunaticsHM0050 Lazy Lunatics
+# HM0050_LazyLunatics
 
  SkillSetter a Placement Portal
 Students struggle to find relevant job opportunities due to the lack of a structured platform, making job applications inefficient.
