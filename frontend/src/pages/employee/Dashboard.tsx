@@ -57,7 +57,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchJobSummaries = async () => {
       try {
-        const response = await axios.get(`${VITE_BACKEND_URL}/api/jobs/summaries`);
+        const response = await axios.get(`${VITE_BACKEND_URL}/api/recruiter/summaries`);
         console.log("Job Summaries:", response.data);
         setJobSummaries(response.data);
       } catch (error) {
