@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import {
@@ -10,9 +10,21 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
+const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const Dashboard = () => {
   // Placeholder data
+
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/employee/login"); // Redirect to login page if no token
+    }
+  }, [token, navigate]);
   const stats = [
     { icon: Briefcase, label: "Total Applications", value: "12" },
     { icon: Clock, label: "Pending Review", value: "5" },
@@ -39,6 +51,24 @@ const Dashboard = () => {
       date: "2024-02-18",
     },
   ];
+
+  const [jobSummaries, setJobSummaries] = useState([]);
+
+  useEffect(() => {
+    const fetchJobSummaries = async () => {
+      try {
+        const response = await axios.get(`${VITE_BACKEND_URL}/api/jobs/summaries`);
+        console.log("Job Summaries:", response.data);
+        setJobSummaries(response.data);
+      } catch (error) {
+        console.error("Error fetching job summaries", error);
+      }
+    };
+    fetchJobSummaries();
+  } , []);
+
+
+
 
   return (
     <motion.div
@@ -86,8 +116,32 @@ const Dashboard = () => {
         ))}
       </div>
 
-      {/* Recent Applications */}
+        {/* Job Summaries */}
       <Card className="glass">
+        <div className="flex items-center justify-between border-b border-border/50 p-6">
+          <h2 className="text-lg font-semibold">Job Posts</h2>
+          <Button variant="ghost" size="sm">
+            View All
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+        <div className="divide-y divide-border/50">
+          {jobSummaries.map((job) => (
+            <div
+              key={`${job.title}-${job.companyName}`}
+              className="flex items-center justify-between p-6"
+            >
+              <div>
+                <h3 className="font-medium">{job.title}</h3>
+                <p className="text-sm text-muted-foreground">{job.companyName}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* Recent Applications */}
+      {/* <Card className="glass">
         <div className="flex items-center justify-between border-b border-border/50 p-6">
           <h2 className="text-lg font-semibold">Recent Applications</h2>
           <Button variant="ghost" size="sm">
@@ -114,7 +168,7 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-      </Card>
+      </Card> */}
     </motion.div>
   );
 };
