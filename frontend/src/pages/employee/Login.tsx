@@ -25,6 +25,7 @@ const EmployeeLogin = () => {
       const response = await axios.post(`${VITE_BACKEND_URL}/api/user/login`,{email,password});
       if(response.status === 200){
         const token = response.data.token;
+        console.log(token);
         if(token){
           localStorage.setItem('token',token);
         }

@@ -8,6 +8,7 @@ const jobSchema = new mongoose.Schema({
   jobDescription: { type: String, required: true },
   requiredSkills: [{ type: String, required: true }],
   salary: { type: Number, required: true},
+  companyName : { type: String, required: true },
 });
 
 const Job = mongoose.model('Job', jobSchema);

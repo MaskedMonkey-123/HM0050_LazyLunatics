@@ -11,8 +11,21 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Dashboard = () => {
+  
+    const navigate = useNavigate();
+    const token = localStorage.getItem("token");
+  
+    useEffect(() => {
+      if (!token) {
+        navigate("/recruiter/login"); // Redirect to login page if no token
+      }
+    }, [token, navigate]);
+
+
   // Placeholder data
   const stats = [
     { icon: Briefcase, label: "Active Job Posts", value: "0" },
